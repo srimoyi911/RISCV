@@ -30,14 +30,6 @@
 #### X86 , 64-bit compiler
 ##### Assembly Code Observation- 
 1.	More verbose  and hence more understandable as compared to RISC-V  assembly
-2.	Total 128 lines of code which is less than RISC-V assembly code
+2.	Total 268 lines of code which is less than RISC-V assembly code
 3.	Similar observation about segments as RISC-V assembly code 
   
-
-3.	Observation of assembly code on changing the numeric values in the input matrices
-##### Before change – 
- 
-
- ##### After change observations –
-1.	Changes are reflected in the assembly code , however unlike RISC-V assembly code , the total number of lines in the assembly code remain the same to 128 lines.
- 
