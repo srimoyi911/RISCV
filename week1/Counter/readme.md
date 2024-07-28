@@ -14,13 +14,14 @@ Counter–
 4.	Each of these segments contains the assembly version of the C code which are the sequences of load, store ,mathematical operations, function calls and branch instruction 
 5.	Total 80 lines of assembly code
 
-![image]()
+(![image](https://github.com/user-attachments/assets/b1e28995-6f27-4521-9ebb-f3a6b7313e6a)
 
  
  ###### Observation after changing the numeric values in the input matrix – 
 1.	Before changing the input
 
-   ![image]
+   ![image]![image](https://github.com/user-attachments/assets/0a4413db-8836-46c1-9355-be0fa22afa19)
+
 
 
 2.	After Changing the input , changes are reflected in the assembly code .
