@@ -75,4 +75,4 @@
 36 = 0 100100 (sign magnitude)
 12 = 0 110100 (2's complement)
 
-     1 011000 (carry is 1 so answer is positive number, ignore the carry, sum part is the final magnitude)--Answer is +24
+     1 011000 (carry is 1 so answer is positive number, ignore the carry, sum part is the final magnitude)
