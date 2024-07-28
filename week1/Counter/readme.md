@@ -1,5 +1,5 @@
 ### Assignment Statement – 
--	Go to Godbolt and run the c code with different compilers like RISC-V , X86, Adrino, ARM etc and note down the observations
+-	Go to Godbolt and run the counter.c code with different compilers like RISC-V , X86, Adrino, ARM etc and note down the observations
 -	Change values/code in the c code and note down the changes in the assembly take multiple screen shots
 Counter– 
 
