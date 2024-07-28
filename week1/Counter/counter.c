@@ -20,7 +20,7 @@ int main()
     {
         count=count+1;
         display(count);
-        delay(5);
+        delay(50000000);
         if(count==N)
         {
             count=0;
