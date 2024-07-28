@@ -1,25 +1,28 @@
 ### Assignment Statement – 
--	Go to Matrix Multiplication code  on Godbolt and run the c code with different compilers like RISC-V , X86 etc and note down your observations
+-	Run the Matrix_mult.c code on Godbolt with different compilers like RISC-V , X86 etc and note down your observations
 -	Change values/code in the c code and note down the changes in the assembly take multiple screen shots
 
-#### 2x2 Matrix multiplication – 
+####  Matrix multiplication of 2 user defined matrix with N*M size – 
 ##### Observations about the C++ Code– 
-1.	C++ Program initializaes 2 2x2 matrices and calls mulMat function to multiply them and print the result including the time taken to perform the calculation
-2.	Function mulMat uses multi dim arrays, time variables and nested for loops 
+1.	This Program creates two 3*4 and 4*3 sized matrices
+2.	Uses nested for loops for doing the matrix multiplication. Also, prints if the matrix multiplication is invalid or not
 3.	Run the Program with RISC-V (32-bit) gcc13.2.0
 ##### Observations about the RISCV- 64 bit assembly code – 
 1.	The compiler compiles the program in the same order in which it’s written in C++ code
 2.	Compiler break downs the program in segments or blocks like .LC1:, .LC2: 
 3.	One segment for each for loop 
-4.	Each of these segments contains the assembly version of the c++ code which are the sequences of load, store ,mathematical operations, function calls and branch instruction 
-5.	Total 159 lines of assembly code
+4.	Each of these segments contains the assembly version of the c code which are the sequences of load, store ,mathematical operations, function calls and branch instruction 
+5.	Total 562 lines of assembly code
  
  ##### Observation after changing the numeric values in the input matrix – 
 1.	Before changing the input 
- 
+![image](https://github.com/user-attachments/assets/c33b1402-771d-4d59-a606-1a6b30166b8d)
 
-2.	After Changing the input , changes are reflected in the assembly code . Also the number of lines in the assembly code increases from 149 to 164
- 
+
+
+2.	After Changing the input , changes are reflected in the assembly code.
+   ![image](https://github.com/user-attachments/assets/57df1da3-e88b-4c88-bb97-ebfeae0345b3)
+
 
 
 
