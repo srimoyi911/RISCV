@@ -4,7 +4,7 @@
 
 ####  Matrix multiplication of 2 user defined matrix with N*M size – 
 ##### Observations about the C++ Code– 
-1.	This Program creates two 3*4 and 4*3 sized matrices
+1.	This Program creates two 3x4 and 4x3 sized matrices
 2.	Uses nested for loops for doing the matrix multiplication. Also, prints if the matrix multiplication is invalid or not
 3.	Run the Program with RISC-V (32-bit) gcc13.2.0
 ##### Observations about the RISCV- 64 bit assembly code – 
