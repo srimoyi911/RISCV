@@ -1,6 +1,6 @@
 
 <details> 
-  <summary>    </summary> 
+  <summary>  Bad sitting posture detection and alerting system with user defined distance and time input   </summary> 
 
   Equipped with 20 energy saving LEDs(10 LEDs each for warm light and soft light), under cabinet lights provide 2 color temperatures ( soft light, warm light), to 
   illuminate your home. You can adjust the intensity of the light arbitrarily through the stepless dimming function.
