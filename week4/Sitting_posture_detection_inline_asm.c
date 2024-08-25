@@ -39,7 +39,7 @@ int main() {
     :"r"(clear_gp2_mask),"r"(trigger_write)
   );
   int i;
-  for(i=0;i<200;i++); //trigger ON for 12usec
+  for(i=0;i<12;i++); //trigger ON for 12usec
 	
   //trigger low for two sensors
   //X30[9:8]= trigger output pin
@@ -48,9 +48,11 @@ int main() {
     :"r"(clear_gp2_mask)
   );
 
+  
+
   //get the distance values from two sensors and store it into temp1 and temp2 variables
-   //x30[11:10]=high output coming from two sensors
-    
+  //x30[11:10]=high output coming from two sensors
+     
 
     while(1){
     //debug
