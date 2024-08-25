@@ -4,22 +4,29 @@ int main() {
   int echo_hd,echo_back;
 	float dist_hd,distance_calc, dist_back;
 	int trigger,temp, buzzer,led;
-  // Get the input from a potentiometer(that is, from variables dist_hd and dist_back) and store into RISC register
-  //X30[0]=distance_pin
+  // Get the 4 bit input value from a potentiometer register and store it into variable
+  //X30[3:0]=distance_pin
   int dist_hd_back;
-  int clear_gp0_mask=0xFFFFFFFE;
+  int clear_gp0_mask=0xFFFFFFF0;
   asm volatile (
-    "and x30,x30,%1\n\t" //keeping only the LSB enabled and masking others
-    "and x10, x10,x0\n\t"
-    "srli x10,x30, 0\n\t" //shift right with zero bits, as LSB is only enabled
-    "andi x30,x10, %0\n\t" //take the value of dist_hd_back var, and it with LSB of x10 and store it into x30 
-    :"r"(dist_hd_back),"r"(clear_gp0_mask)
-    : "x30" // ?? output of this asm  
+    "and x10,x10,0\n\t"  //clear thi reg
+    "and x10,x30,%0\n\t" //keeping only the 4 bit LSB enabled and masking others
+    "ori %0,x10, 0\n\t" //x10 value is put into dist_hd_back variable
+    :"r"(clear_gp0_mask),
+    :"=r"(dist_hd_back)
   );
   
-  //get the input of timeout value from potentiometer
-    printf("Enter the user defined timeout in sec\n");
-    scanf("%d",&timeout);
+  //get the 4bit timeout value from potentiometer reg and store it into timeout variable 
+  //X30[7:4]=timeout pin
+   int timeout;
+   int clear_gp1_mask=0xFFFFFF0F;
+   asm volatile (
+    "and x10,x10,0\n\t"  //clear thi reg
+    "and x10,x30,%0\n\t" 
+    "ori %0,x10, 0\n\t" //x10 value is put into dist_hd_back variable
+    :"r"(clear_gp1_mask),
+    :"=r"(timeout)
+  );
     int count= 0;
 	int i;
 
