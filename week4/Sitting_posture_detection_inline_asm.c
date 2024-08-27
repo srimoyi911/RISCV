@@ -20,6 +20,7 @@ int main() {
   asm volatile (
     "and x30,x30,%0\n\t" //masking the required bits 
     "or x30,x30,%1\n\t" //time var is put into x30 8 bit LSB 
+    :
     :"r"(gp0), "r"(time)
   );
   //debug
