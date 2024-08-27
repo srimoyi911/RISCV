@@ -1,3 +1,4 @@
+#include<stdio.h>
 int division(int dividend, int divisor) {
     int quotient = 0;
     
@@ -11,12 +12,17 @@ int division(int dividend, int divisor) {
 }
 
 int main() {
-
+	
+  //debug
+  printf("Enter the value of timeout in sec ");
+  
+  //debug
+	
   int freq=100; //100Hz
-  //get the 4bit input timeout value from potentiometer  and store it into variable 
-  //X30[3:0]=timeout input pin
+  //get the 8bit input timeout value from potentiometer  and store it into variable 
+  //X30[7:0]=timeout input pin
   int timeout;
-  int clear_gp0_mask=0x0000000F;
+  int clear_gp0_mask=0x000000FF;
   asm volatile (
     "and x30,x30,%0\n\t" //passing only the 4 bit LSB enabled and masking others
     "addi %0,x30, 0\n\t" //x30 value is put into dist_hd_back variable
@@ -112,19 +118,19 @@ int main() {
 	  printf("correct posture");}
   else if {
 	  
-  //X30[4]=buzzer
+  //X30[12]=buzzer
    int buzzer=1;
-   int buzzer_write=buzzer<<4;
-   int clear_gp6_mask=0xFFFFFFEF;
+   int buzzer_write=buzzer<<12;
+   int clear_gp6_mask=0xFFFFEFFF;
    asm volatile (
     "and x30,x30,%0\n\t" //clearing the required bits from junk value
     "or x30,x30,%1\n\t" 
     :"r"(clear_gp6_mask),"r"(buzzer_write)
   );
-   //X30[5]=led	  
+   //X30[13]=led	  
    int led=1;
-   int led_write=led<<5;
-   int clear_gp7_mask=0xFFFFFFDF;
+   int led_write=led<<13;
+   int clear_gp7_mask=0xFFFFDFFF;
    asm volatile (
     "and x30,x30,%0\n\t" //clearing the required bits from junk value
     "or x30,x30,%1\n\t" 
