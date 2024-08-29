@@ -5,6 +5,7 @@ int division(int dividend, int divisor) {
     while (dividend >= divisor) {
         dividend -= divisor;
         quotient++;
+        printf("Value of quotient is %d\n",quotient);
     }
 
     return quotient;
@@ -14,29 +15,34 @@ int main() {
   
   
   //debug
-  printf("Entering the value of timeout in sec ");
-  int time=30;
+  printf("Entering the value of timeout in sec\n ");
+  int time=120;
   int gp0=0xFFFFFF00;
   asm volatile (
     "and x30,x30,%0\n\t" //masking the required bits 
-    "or x30,x30,%1\n\t" //time var is put into x30 8 bit LSB 
+    "or x30,x30,%1\n\t" //time var is put into x30 8 LSB bits
     :
     :"r"(gp0), "r"(time)
-  );
+    );
   //debug
   	
   int freq=100; //100Hz
+  int dist_diff=1;//hardcoding this to 1meter
+  int timeout;
+
   //get the 8bit input timeout value from potentiometer  and store it into variable 
   //X30[7:0]=timeout input pin
-  int timeout;
+  
   int clear_gp0_mask=0x000000FF	;
   asm volatile (
-    "and x30,x30,%0\n\t" //passing only the 8 bit LSB enabled and masking others
+    "and x30,x30,%0\n\t" //Keeping only the 8 bit LSB and clearing others
     "addi %0,x30, 0\n\t" //x30 value is put into timeout variable
-    :"r"(clear_gp0_mask),
     :"=r"(timeout)
+    :"r"(clear_gp0_mask)
+    
   );
-  printf("Value of timeout is %d \n", timeout);
+  printf("Value of timeout readback from reg x30 is %d \n", timeout);
+
 while(1){
   //trigger out high  for sensor1
   //X30[8]=trigger output pin
@@ -46,192 +52,247 @@ while(1){
    int clear_gp2_mask=0xFFFFFEFF;
    asm volatile (
     "and x30,x30,%0\n\t" //clearing the required bits from junk value
-    "or x30,x30,%1\n\t" //trigger write var is put into x30 bits 8,9
+    "or x30,x30,%1\n\t" //trigger write var is put into x30 bits 8
+    :
     :"r"(clear_gp2_mask),"r"(trigger_write)
   );
   int i;
-  for(i=0;i<12;i++); //delay for 12usec
+  for(i=0;i<12;i++); //delay for 120msec
 	
   //trigger out low for  sensor1
   //X30[8]= trigger output pin
   asm volatile (
     "and x30,x30,%0\n\t"  //clearing the trigger pins of x30
+    :
     :"r"(clear_gp2_mask)
   );
  
  
   //debug
-  printf("Entering the value of echo value 1 for sensor 1");
+  printf("Entering the echo value of 1 for sensor 1 \n");
   int ec=1<<10;
-  int gp1=0xFFFFFFBFF;
+  int gp1=0xFFFFFBFF;
   asm volatile (
-    "and x30,x30,%0\n\t" //masking the required bits 
-    "or x30,x30,%1\n\t" //time var is put into x30 10 bit 
+    "and x30,x30,%0\n\t" 
+    "or x30,x30,%1\n\t"  
+    :
     :"r"(gp1), "r"(ec)
   );
   //debug
-	  
+ 	  
   //get the echo values for sensor1 and store into echo variable
   //x30[10]=high output coming from sensor1
     int  echo;
     int clear_gp3_mask=0x00000400;
     asm volatile (
-    "and x30,x30,%0\n\t" //keeping only the 10 bit  enabled and masking others
-    "srli x30,x30,10\n\t" //shift right and move trgger to LSB
-    "addi %0,x30, 0\n\t" //x30 value is put into echo variable
-    :"r"(clear_gp3mask),
+    "and x30,x30,%0\n\t" //keeping only the 10th bit  enabled and zeoing out others--dont do?????
+    "srli x30,x30,10\n\t" //shift right and move to LSB
+    "addi %0,x30, 0\n\t" 
     :"=r"(echo)
+    :"r"(clear_gp3_mask)
   ); 
-  
+
+  printf("Value of echo for sensor1 is %d\n",echo);
   int count=0;
   int distance=0;
   int duration=0;
   //debug
-  int ec=1<<10;
-  int gp1=0xFFFFFFBFF;
+ 
   if (echo ==1)
-  {
-     for (i=0;i<=1000000;i++){
+  {  //debug
+     for (i=1;i<=21;i++){ //keep the echo high for 200msec
          
          asm volatile (
-           "and x30,x30,%0\n\t" //masking the required bits 
-           "or x30,x30,%1\n\t" //time var is put into x30 10 bit 
-           :"r"(gp1), "r"(ec)
-           );
+           "and x30,x30,%0\n\t" 
+           "or x30,x30,%1\n\t" 
+           :
+	   :"r"(gp1), "r"(ec)
+           ); //debug
 	  count=count+1;
+          
      }
-   //debug
-   ec=0;	  
+   //debug clearing the echo reg	  
    asm volatile (
-           "and x30,x30,%0\n\t" //masking the required bits 
-           "or x30,x30,%1\n\t" //time var is put into x30 10 bit 
-           :"r"(gp1), "r"(ec)
+           "and x30,x30,%0\n\t"  
+           :
+	   :"r"(gp1)
            );
    //debug
+   //storing the reg value to echo variable
+   asm volatile (
+    "and x30,x30,%0\n\t" 
+    "srli x30,x30,10\n\t"
+    "addi %0,x30, 0\n\t" 
+    :"=r"(echo)
+    :"r"(clear_gp3_mask)
+  ); 
+   
   }
   
   //debug
-  printf("Value of echo for sensor1 test is %d", echo);
+  printf("Value of echo for sensor1 after loop exit is %d \n", echo);
   //debug
-  duration=division(count,freq); //returns the value in sec
-  distance = duration*172; //distance is in meter
+  duration=division(count,(freq/100)); //returns the value in 10ms resolution
+  distance = (duration*10*172)/1000; //distance is in meter
+  printf("Value of distance for sensor 1 is %d\n",distance);
 
-	
+
   //trigger out high  for sensor2
   //X30[9]=trigger output pin
    trigger=1;
-   int trigger_write=trigger<<9;
+   trigger_write=trigger<<9;
    int clear_gp4_mask=0xFFFFFDFF;
    asm volatile (
     "and x30,x30,%0\n\t" //clearing the required bits from junk value
     "or x30,x30,%1\n\t" //trigger write var is put into x30 bits 8
-    :"r"(clear_gp2_mask),"r"(trigger_write)
+    :
+    :"r"(clear_gp4_mask),"r"(trigger_write)
   );
-	
-  for(i=0;i<12;i++); //delay for 12usec
+  //debug passing the trigger out to a variable
+  //X30[9]=trigger	  
+   int trigger_test;
+   int gp12=0x00000200;
+   asm volatile (
+    "and x30,x30,%0\n\t" //clearing the required bits from junk value
+    "srli %0,x30,9\n\t" 
+    :"=r"(trigger_test)
+    :"r"(gp12)
+  );	
+   printf("Checkif trigger is 1 for sensor 2:%d \n",trigger_test);
+    
+  for(i=0;i<12;i++); //delay for 120msec,as one count=10msec as per cpu freq
 	
   //trigger out low for  sensor2
   //X30[9]= trigger output pin
   asm volatile (
     "and x30,x30,%0\n\t"  //clearing the trigger pins of x30
+    :
     :"r"(clear_gp4_mask)
   );
 
   //debug
-  printf("Entering the echo value of 1 for sensor 2");
-  int ec1=1<<11;
-  int gp2=0xFFFFFF7FF;
+  printf("Entering the echo value of 1 for sensor 2\n");
+  int ec_one=1<<11;
+  int gp2=0xFFFFF7FF;
   asm volatile (
     "and x30,x30,%0\n\t" //masking the required bits 
-    "or x30,x30,%1\n\t" //time var is put into x30 10 bit 
-    :"r"(gp2), "r"(ec1)
+    "or x30,x30,%1\n\t"  
+    :
+    :"r"(gp2), "r"(ec_one)
   );
   //debug
-	  
+  
   //get the echo values for sensor2 and store into echo1 variable
-  //x30[11]=high output coming from sensor1
+  //x30[11]=high output coming from sensor2
     int  echo1;
     int clear_gp5_mask=0x00000800;
     asm volatile (
-    "and x30,x30,%0\n\t" //keeping only the 11 bit  enabled and masking others
-    "srli x30,x30,11\n\t" //shift right and move trgger to LSB
-    "addi %0,x30, 0\n\t" //x30 value is put into echo1 variable
-    :"r"(clear_gp5mask),
+    "and x30,x30,%0\n\t"//keeping only the 10th bit  enabled and masking others
+    "srli x30,x30,11\n\t" //shift right and move to LSB
+    "addi %0,x30, 0\n\t" 
     :"=r"(echo1)
+    :"r"(clear_gp5_mask)
   ); 
+  
+  printf("Value of echo1 %d\n",echo1);
   int count1=0;
   int distance1=0;
   int duration1=0;
   //debug
   
   if (echo1 ==1)
-  {
-	  for (i=0;i<=1000000;i++){
+  {       //debug
+	  for (i=1;i<=20;i++){//keep echo high for 200msec
                int ec1=1<<11;
                asm volatile (
                "and x30,x30,%0\n\t" //masking the required bits 
-               "or x30,x30,%1\n\t" //time var is put into x30 10 bit 
-               :"r"(gp2), "r"(ec1)
+               "or x30,x30,%1\n\t"  
+               :
+	       :"r"(gp2), "r"(ec1)
 	       );
-               count1=count1+1;
+               count1=count1+1;//debug
+               
 	  }
-  ec1=0;
+  //debug
   asm volatile (
-               "and x30,x30,%0\n\t" //masking the required bits 
-               "or x30,x30,%1\n\t" //time var is put into x30 10 bit 
-               :"r"(gp2), "r"(ec1)
-	       );	  
+               "and x30,x30,%0\n\t" //clearing the echo register  
+               :
+	       :"r"(gp2)
+	       );
+  //debug
+  //reg value is put into echo1 variable
+  asm volatile (
+    "and x30,x30,%0\n\t" //keeping only the 11 bit  enabled and masking others
+    "srli x30,x30,11\n\t" //shift right and move trgger to LSB
+    "addi %0,x30, 0\n\t" 
+    :"=r"(echo1)
+    :"r"(clear_gp5_mask)
+  );	  
   } 
   //debug
-  printf("Value of echo for test sensor 2 is %d--should be zero",echo1);
-  duration1=division(count1,freq); //returns the value in sec
-  distance1 = duration1*172; //distance is in meter
-	
-  if((distance==distance1){
-	  printf("correct posture");}
-  else if {
+  printf("Value of echo for sensor 2 after loop exit is %d \n",echo1);
+  duration1=division(count1,(freq/100)); //returns the value in msec
+  distance1 = (duration1*10*172)/1000; //distance is in meter
+  printf("Value of distance for sensor 2 is %d \n", distance1);
+
+  int clear_gp6_mask=0xFFFFEFFF;
+  int clear_gp7_mask=0xFFFFDFFF;	
+  if((distance-distance1)<=dist_diff){
+	  printf("correct posture\n");}
+  
+ else {
 	  
-  //X30[12]=buzzer
+  //x30[12]=buzzer
    int buzzer=1;
-   int buzzer_write=buzzer<<12;
-   int clear_gp6_mask=0xFFFFEFFF;
+   int buzzer_write= (buzzer)<<12;
+  
    asm volatile (
-    "and x30,x30,%0\n\t" //clearing the required bits from junk value
+    "and x30,x30,%0\n\t" 
     "or x30,x30,%1\n\t" 
+    :
     :"r"(clear_gp6_mask),"r"(buzzer_write)
   );
-   //X30[13]=led	  
+   //x30[13]=led	  
    int led=1;
-   int led_write=led<<13;
-   int clear_gp7_mask=0xFFFFDFFF;
+   int led_write=(led)<<13;
    asm volatile (
     "and x30,x30,%0\n\t" //clearing the required bits from junk value
     "or x30,x30,%1\n\t" 
-    :"r"(clear_gp7_mask),"r"(buzzer_write)
+    :
+    :"r"(clear_gp7_mask),"r"(led_write)
   );
-  printf("incorrect posture: led and buzzer up");}
+  printf("incorrect posture: led and buzzer up!! \n");
   }
-  //debug
-  //X30[13]=led	  
-   int led1;
-   int gp9=0x00002000;
+  //debug passing the buzzer out to a variable
+  //x30[12]=buzzer  
+   int buzzer1,led1;
+   int gp_buzzer=0xFFFFFFFF;
    asm volatile (
-    "and x30,x30,%0\n\t" //clearing the required bits from junk value
-    "or %0,x30,0\n\t" 
-    :"r"(gp9),"=r"(led1)
+    "andi x28,x28,0\n\t"
+    "and x28,x30,%0\n\t" //retaining all the x30 bits and passsing to temp reg
+    "srli x28,x28,12\n\t" //shift by the required bit, now lsb contains the required bit
+    "andi %0,x28,1\n\t"//retaining only the required 12th bit
+    "srli x28,x28,1\n\t"
+    "andi %1,x28,1\n\t"//retaining only the required 13th bit
+    :"=r"(buzzer1),"=r"(led1)
+    :"r"(gp_buzzer)
   );
-  printf("Check if led is set :%d",led1);
+  printf("Check if buzzer is set :%d \n",buzzer1);
+ 
+  printf("Check if led is set :%d \n",led1);
   //debug
   // clearing led and buzzer
    asm volatile (
-    "and x30,x30,%0\n\t" //clearing the required bits from junk value
+    "and x30,x30,%0\n\t" //clearing only the required bits 
+    :
     :"r"(clear_gp6_mask)
   );
      asm volatile (
-    "and x30,x30,%0\n\t" //clearing the required bits from junk value
+    "and x30,x30,%0\n\t" //clearing only the required bits 
+    :
     :"r"(clear_gp7_mask)
   );
-  for(i=0;i<=(1000000*timeout);i++);// wait for the timeout value in sec
+  for(i=0;i<=(1000000000000*timeout);i++);// wait for the timeout value in sec
 }
+
 }
- 
