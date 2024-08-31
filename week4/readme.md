@@ -3,7 +3,7 @@ This week's task is to add inline assembly code to create bare metal C applicati
 posture detection, compile it using riscv32 compiler and generate asm text file. 
 
 </details> <details> <summary> Application C code with inline assembly </summary>
-[posture_detect.asm](./posture_detect.asm)
+[posture_detect.asm](https://github.com/srimoyi911/RISCV/blob/main/week4/posture_detect_inline_assembly.c))
 
 </details>
 <details><summary>Full Assembly code for application  without any compiler optimization </summary>
