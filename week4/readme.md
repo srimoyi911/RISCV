@@ -9,10 +9,10 @@ posture detection and then compile it using riscv32 compiler and generate assemb
  </details>
 <details><summary>Output of the application code with debug statements </summary>
 1. When the distance measured by head sensor and back sensor placed in the chair are equal. As can be seen the led and buzzer output are zero: 
-![output_correct posture](https://github.com/user-attachments/assets/a522fc1f-502d-4fc6-9ea8-a017966efe93)
+![image](https://github.com/user-attachments/assets/c42ba52f-4cf5-41cb-8623-45a82d49ee25)
  
 2. When the difference between distance measured by head sensor and back sensor is more than user defined distance. As can be seen the led and buzzer output are set:
-   ![output_incorrect posture](https://github.com/user-attachments/assets/88384e4e-7ad5-43c3-9edc-1d3177f5f7bb)
+   ![image](https://github.com/user-attachments/assets/da5244ce-1cbb-4cbc-85c6-e035e7cec4c3)
 
 </details>
 <details><summary>Full Assembly code for application  without any compiler optimization </summary>
