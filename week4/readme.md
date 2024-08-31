@@ -12,7 +12,7 @@ posture detection and then compile it using riscv32 compiler and generate assemb
 ![output_correct posture](https://github.com/user-attachments/assets/a522fc1f-502d-4fc6-9ea8-a017966efe93)
  
 2. When the difference between distance measured by head sensor and back sensor is more than user defined distance. As can be seen the led and buzzer output are set:
-![output_incorrect posture](https://github.com/user-attachments/assets/88384e4e-7ad5-43c3-9edc-1d3177f5f7bb)
+   ![output_incorrect posture](https://github.com/user-attachments/assets/88384e4e-7ad5-43c3-9edc-1d3177f5f7bb)
 
 </details>
 <details><summary>Full Assembly code for application  without any compiler optimization </summary>
