@@ -3,7 +3,7 @@ This week's task is to add inline assembly code to create bare metal C applicati
 posture detection, compile it using riscv32 compiler and generate asm text file. 
 
 </details> <details> <summary> Application C code with inline assembly </summary>
-[posture_detect_inline_assembly.c](./posture_detect_inline_assembly.c)
+[posture_detect.asm](./posture_detect.asm)
 
 </details>
 <details><summary>Full Assembly code for application  without any compiler optimization </summary>
@@ -14,7 +14,7 @@ posture detection, compile it using riscv32 compiler and generate asm text file.
 </details> <details><summary>The instruction statistics from the assembly code </summary>
 
 
-<ol> <li>Total number of instructions used in Ofast version of assembly code - <strong>159</strong> </li>  <li> Total number of unique instructions used in the program - <strong>17</strong> </li> 
+<ol> <li>Total number of instructions used in assembly code - <strong>159</strong> </li>  <li> Total number of unique instructions used in the program - <strong>17</strong> </li> 
 
 
 
