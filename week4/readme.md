@@ -35,28 +35,38 @@ posture detection and then compile it using riscv32 compiler and generate assemb
 </details> <details><summary>The instruction statistics from the assembly code </summary>
 
 
-<ol> <li>Total number of instructions used in assembly code - <strong>159</strong> </li>  <li> Total number of unique instructions used in the program - <strong>17</strong> </li> 
+<ol> <li>Total number of instructions used in assembly code - <strong>619</strong> </li>  <li> Total number of unique instructions used in the program - <strong>17</strong> </li> 
 
 
 
 <li>List of Unique Instructions produced by the compiler</li>
-<ol> <li> <strong>lui</strong></li>
- <li> <strong>li </strong></li>
-<li> <strong>addi</strong> </li>
-<li> <strong>not</strong> </li>
-<li> <strong>and </strong> </li>
-<li> <strong>andi </strong> </li>
-<li> <strong> beqz </strong> </li>
-<li> <strong>srli </strong> </li>
+<ol> <li> <strong>auipc</strong></li>
+ <li> <strong>addi </strong></li>
+<li> <strong>beqz</strong> </li>
+<li> <strong>sub</strong> </li>
+<li> <strong>li </strong> </li>
+<li> <strong>jal </strong> </li>
+<li> <strong> lw </strong> </li>
+<li> <strong>j </strong> </li>
+<li> <strong>lbu </strong> </li>
 <li> <strong>bnez </strong> </li>
-<li> <strong>add </strong> </li>
-<li> <strong>slli </strong> </li>
-<li> <strong>or </strong> </li>
-<li> <strong> j </strong> </li>
-<li> <strong>ret </strong> </li>
-<li> <strong>mv </strong> </li>
 <li> <strong>sw </strong> </li>
-<li> <strong>lw </strong> </li>
+<li> <strong>sb </strong> </li>
+<li> <strong> mv </strong> </li>
+<li> <strong>and </strong> </li>
+<li> <strong>bge </strong> </li>
+<li> <strong>ori </strong> </li>
+<li> <strong>srli </strong> </li>
+<li> <strong>bne </strong> </li> 
+ <li> <strong>sllw </strong> </li>
+ <li> <strong>lui </strong> </li>
+ <li> <strong>blt </strong> </li>
+ <li> <strong>or </strong> </li>
+ <li> <strong>bltz </strong> </li>
+ <li> <strong>bltu </strong> </li>
+ <li> <strong>srai </strong> </li>
+ <li> <strong>sll </strong> </li>
+ <li> <strong>beq </strong> </li>
 </ol>
 </ol>
 </details>
