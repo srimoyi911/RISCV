@@ -13,10 +13,18 @@ posture detection and then compile it using riscv32 compiler and generate assemb
  <li>When the difference between distance measured by head sensor and back sensor is more than user defined distance, hence, led and buzzer output are set:</li>
     [incorrect posture](https://github.com/user-attachments/assets/da5244ce-1cbb-4cbc-85c6-e035e7cec4c3)
 
+ </details>
+<details><summary>Application code with optimizations, that is, removing the libraries and the debug statements </summary>
+
+[posture_detect_inline_assembly_optimized.c](https://github.com/srimoyi911/RISCV/blob/main/week4/posture_detect_inline_assembly_optimized.c)
+  
+ 
 </details>
-<details><summary>Full Assembly code for application  without any compiler optimization </summary>
+<details><summary>Full Assembly code for application </summary>
 
  [posture_detect.asm](https://github.com/srimoyi911/RISCV/blob/main/week4/posture_detect.asm)
+
+
 
 </details>
 <details><summary>Issues faced while debugging the application code  </summary>
