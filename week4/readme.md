@@ -14,7 +14,7 @@ posture detection and then compile it using riscv32 compiler and generate assemb
     [incorrect posture](https://github.com/user-attachments/assets/da5244ce-1cbb-4cbc-85c6-e035e7cec4c3)
 
  </details>
-<details><summary>Application code with optimizations, that is, removing the libraries and the debug statements </summary>
+<details><summary>Application code with optimizations, that is, removing the libraries and the debug statements and * and / operators </summary>
 
 [posture_detect_inline_assembly_optimized.c](https://github.com/srimoyi911/RISCV/blob/main/week4/posture_detect_inline_assembly_optimized.c)
   
@@ -31,6 +31,7 @@ posture detection and then compile it using riscv32 compiler and generate assemb
  
 1. If Ofast flag is used while compliation,it will skip some of the instructions in the assembly language and will also shuffle the program sequence. This will give undesired results.
 2. X30 reg is a temporary register, so any changes in the x30 register will only be visible inside the scope where it is passed. So, have used x27 register which is a saved register.
+3. RiscV32 doesnot support * and / operators. Compilation gives error.
 
 </details> <details><summary>The instruction statistics from the assembly code </summary>
 
