@@ -17,7 +17,12 @@ posture detection and then compile it using riscv32 compiler and generate assemb
 <details><summary>Application code with optimizations, that is, removing the libraries and the debug statements and * and / operators </summary>
 
 [posture_detect_inline_assembly_optimized.c](https://github.com/srimoyi911/RISCV/blob/main/week4/posture_detect_inline_assembly_optimized.c)
+
+</details>
+<details><summary>Commands used for compilation and dissassembly </summary>
   
+ riscv64-unknown-elf-gcc -mabi=ilp32 -march=rv32i -nostdlib -ffreestanding  -o test.o posture_detect_inline_assembly_new.c
+ riscv64-unknown-elf-objdump -d test.o | less >> posture_detect.asm
  
 </details>
 <details><summary>Full Assembly code for application </summary>
