@@ -11,6 +11,22 @@ int division(int dividend, int divisor) {
     return quotient;
 }
 
+int multiply(int a, int b) {
+    int out = 0;
+    
+    if(b== 0)
+    return 0;
+ 
+    /* Add x one by one */
+    if(b > 0 )
+    return (a + multiply(a, b-1));
+ 
+        
+    }
+
+    
+
+
 int main() {
   
   
@@ -19,7 +35,7 @@ int main() {
   int freq=100; //100Hz
   int dist_diff=1;//hardcoding this to 1meter
   int timeout;
-
+  int freq_res=division(freq,100);
   //get the 8bit input timeout value from potentiometer  and store it into variable 
   //x27[7:0]=timeout input pin
   
@@ -92,8 +108,8 @@ while(1){
   }
   
   
-  duration=division(count,(freq/100)); //returns the value in 10ms resolution
-  distance = (duration*10*172)/1000; //distance is in meter
+  duration=division(count,freq_res); //returns the value in 10ms resolution
+  distance = division(multiply(1720,duration),1000); //distance is in meter
 
 
 
@@ -152,8 +168,8 @@ while(1){
   } 
 
  
-  duration1=division(count1,(freq/100)); //returns the value in msec
-  distance1 = (duration1*10*172)/1000; //distance is in meter
+  duration1=division(count1,freq_res); //returns the value in msec
+  distance1 = division(multiply(1720,duration1),1000); //distance is in meter
   
 
   int clear_gp6_mask=0xFFFFEFFF;
@@ -193,7 +209,7 @@ while(1){
     :
     :"r"(clear_gp7_mask)
   );
-  for(i=0;i<=(1000*timeout);i++);// wait for the timeout value in sec
+  for(i=0;i<=(multiply(1000,timeout));i++);// wait for the timeout value in sec
 }
 
 }
