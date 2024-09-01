@@ -17,7 +17,7 @@ int multiply(int a, int b) {
     if(b== 0)
     return 0;
  
-    /* Add x one by one */
+    
     if(b > 0 )
     return (a + multiply(a, b-1));
  
