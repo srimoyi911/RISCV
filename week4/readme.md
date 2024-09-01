@@ -21,8 +21,8 @@ posture detection and then compile it using riscv32 compiler and generate assemb
 </details>
 <details><summary>Commands used for compilation and dissassembly </summary>
   
-  1. <li>riscv64-unknown-elf-gcc -mabi=ilp32 -march=rv32i -nostdlib -ffreestanding  -o test.o posture_detect_inline_assembly_new.c </li>
-  2. <li>riscv64-unknown-elf-objdump -d test.o | less >> posture_detect.asm </li>
+  1. riscv64-unknown-elf-gcc -mabi=ilp32 -march=rv32i -nostdlib -ffreestanding  -o test.o posture_detect_inline_assembly_new.c 
+  2. riscv64-unknown-elf-objdump -d test.o | less >> posture_detect.asm </li>
  
 </details>
 <details><summary>Full Assembly code for application </summary>
