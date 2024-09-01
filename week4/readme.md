@@ -35,7 +35,7 @@ posture detection and then compile it using riscv32 compiler and generate assemb
 </details> <details><summary>The instruction statistics from the assembly code </summary>
 
 
-<ol> <li>Total number of instructions used in assembly code - <strong>619</strong> </li>  <li> Total number of unique instructions used in the program - <strong>17</strong> </li> 
+<ol> <li>Total number of instructions used in assembly code - <strong>619</strong> </li>  <li> Total number of unique instructions used in the program - <strong>27</strong> </li> 
 
 
 
