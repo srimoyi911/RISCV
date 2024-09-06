@@ -67,7 +67,6 @@ posture detection and then compile it using riscv32 compiler and generate assemb
  <li> <strong>ori </strong> </li>
  <li> <strong>andi </strong> </li>
 <li> <strong>bne </strong> </li> 
- <li> <strong>lui </strong> </li>
  <li> <strong>blt </strong> </li>
 </ol>
 </ol>
