@@ -2,6 +2,7 @@ In this week we create a Custom RISC-V core that will run our application bare m
 Tasks completed 
 
 1.  Take the tested and optimized inline assembly code from last week.
+   [posture_detect.asm](https://github.com/srimoyi911/RISCV/blob/main/week4/posture_detect.asm)
 2.  Created all.json file to generate the chipcron processor code
 3.  Generated processor core and testbench
    
