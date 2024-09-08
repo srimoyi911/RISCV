@@ -10,14 +10,20 @@
   <details> 
   <summary>  Functionality </summary> 
   1. Set the timeout value using a potentiometer.
+    
   2. The trigger pin is set to high for ultrasonic sensor1(used for measuring the head distance). When the trigger pin is pulled high, 
      then sound waves are sent from the sensor. Pull the trigger pin to low after waiting for 12msec.
+     
   3. The echo pin output from the sensor1 goes high and the time for which the echo pin goes high is noted. Distance is calculated for 
      sensor1.
+     
   4. Repeat steps 2 to 3 for sensor2.
+     
   5. The distance received from both the sensors are compared, and if its greater than a hard coded value(value decided based on a 
      straight posture),then go to step6, else goto step7.
+     
   6. Pull the led and buzzer output pin high.
+     
   7. Wait for the user defined timeout value and go to step2.
      </details>
 
