@@ -38,3 +38,10 @@
   
    </details>
 
+   <details> 
+  <summary>  C code compilation output </summary> 
+      <img width="526" alt="image" src=https://github.com/user-attachments/assets/4ce0a4d7-da0e-4df7-be44-229ee3cfcb45>
+    <img width="526" alt="image" src=https://github.com/user-attachments/assets/a53c4b7c-2b8a-4944-a1fd-9ac8ff9bd01c>
+
+</details>
+
