@@ -33,6 +33,8 @@
 </details>
 <details>
   <summary> C Program </summary>
+  
   [Sitting_posture_detection.c](./Sitting_posture_detection.c) 
+  
    </details>
 
