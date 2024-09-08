@@ -1,32 +1,8 @@
 
-int division(int dividend, int divisor) {
-    int quotient = 0;
-    
-    while (dividend >= divisor) {
-        dividend -= divisor;
-        quotient++;
-        
-    }
-
-    return quotient;
-}
-
-int multiply(int a, int b) {
-    int out = 0;
-    
-    if(b== 0)
-    return 0;
- 
-    
-    if(b > 0 )
-    return (a + multiply(a, b-1));
- 
-        
-    }
 
     
-
-
+int division(int dividend, int divisor);
+int multiply(int a, int b);
 int main() {
   
   
@@ -213,3 +189,29 @@ while(1){
 }
 
 }
+
+
+int division(int dividend, int divisor) {
+    int quotient = 0;
+    
+    while (dividend >= divisor) {
+        dividend -= divisor;
+        quotient++;
+        
+    }
+
+    return quotient;
+}
+
+int multiply(int a, int b) {
+    int out = 0;
+    
+    if(b== 0)
+    return 0;
+ 
+    
+    if(b > 0 )
+    return (a + multiply(a, b-1));
+ 
+        
+    }
