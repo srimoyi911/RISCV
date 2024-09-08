@@ -1,3 +1,24 @@
+### Performance Calculation
+Total number of instrauctions - 148, CPU=1GHz, Tp=1ns
+Instruction   execution time (in clks)  Frequency_of_instruction   total_clk_cycles_taken_by_the_inst  
+addi          2                         14                           14x2 =  28 
+add           1                         2                            2*1 =  2 
+sw            4                         32                           32*4 = 128
+j             3                         8                            8x3 =  24
+jal           4                         7                            7x4 =  28
+lw            4                         44                           4x44 = 176
+li            2                         12                           2x12 = 24
+mv            2                         6                            2x6 =  12
+sub           3                         2                           3x2 =  6
+bnez          2                         1                           2x1 =  2
+blez          2                         1                           2x1 =  2
+beq           2                         4                           4x2 =  8
+bge           2                         1                           2x1 =  2
+blt           2                         1                           2x1 =  2
+                                               
+Total clock cycles taken to execute the program                           444
+CPI                                                                  444/148 = 3clocks per instructions 
+CPU performance  = CPI * Instruction count * clock cycle time =      3*148* 1ns = 444 ns
 
 00010054 <multiply>:
    10054:	fd010113          	addi	sp,sp,-48
