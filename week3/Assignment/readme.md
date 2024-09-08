@@ -9,7 +9,7 @@
   </details>
   <details> 
   <summary>  Functionality </summary> 
-  1. Set the timeout value using a potentiometer.
+   1. Set the timeout value using a potentiometer.
     
   2. The trigger pin is set to high for ultrasonic sensor1(used for measuring the head distance). When the trigger pin is pulled high, 
      then sound waves are sent from the sensor. Pull the trigger pin to low after waiting for 12msec.
