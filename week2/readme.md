@@ -3,7 +3,8 @@
 </details>
 <details><summary> Measuring the CPU perfomance </summary>
   
-The following file contain the RISCV ASM code for the ALU C program. The CPU performance is calucated at the top of the file 
+The following file contain the RISCV ASM code for the ALU C program. RISCV 32 bit compiler doesnot support * and / operators. So,the ALU C code is modified to eliminate the use of those operations. 
+The CPU performance is calucated at the top of the file 
 (https://github.com/srimoyi911/RISCV/blob/main/week2/ALU_asm.txt) 
 </details>  
 <details> <summary> Chipcron tool </summary>
