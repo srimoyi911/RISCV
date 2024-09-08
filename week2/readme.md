@@ -1,5 +1,5 @@
 <details><summary> Instructions used to generate assembly code </summary>
-![image](https://github.com/user-attachments/assets/d409f95d-36d8-4e2a-b7c3-8fdda2dc3f7c)
+<img width="563" alt="image" src=https://github.com/user-attachments/assets/d409f95d-36d8-4e2a-b7c3-8fdda2dc3f7c>
 </details>
 <details><summary> Measuring the CPU perfomance </summary>
   
