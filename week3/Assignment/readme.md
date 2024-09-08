@@ -21,7 +21,7 @@
   4. Repeat steps 2 to 3 for sensor2.
      
   5. The distance received from both the sensors are compared, and if its greater than a hard coded value(value decided based on a 
-     straight posture),then go to step6, else goto step7.
+     straight posture,here set to 1cm),then go to step6, else goto step7.
      
   6. Pull the led and buzzer output pin high.
      
