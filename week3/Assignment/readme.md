@@ -27,7 +27,11 @@
      
   7. Wait for the user defined timeout value and go to step2.
      </details>
-
+<details> 
+  <summary>  GPIO Mapping </summary> 
+      <img width="526" alt="image" src=https://github.com/user-attachments/assets/7fd95719-615c-46a8-b79d-e9a34e67bcfc>
+</details>
+<details>
   <summary> C Program </summary>
   Sitting_posture_detection.c
    </details>
