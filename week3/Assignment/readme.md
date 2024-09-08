@@ -7,4 +7,9 @@
   <summary>  Block Diagram   </summary> 
  <img width="526" alt="image" src=https://github.com/user-attachments/assets/6f436052-3a84-4857-8e6e-a06ceec7bf42>
   </details>
+  <details> 
+  <summary>  Functionality </summary> 
+  1. Set the trigger pin to high for ultrasonic sensor1(used for measuring the head distance). When the trigger pin is pulled high, then 
+    sound waves are sent from the sensor to the chair. Pull the trigger pin to low after waiting for 12msec.
+  2.
 
