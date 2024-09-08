@@ -6,7 +6,7 @@ int main() {
     float dist_hd, dist_back,dist_hc;
     int trigger,trigger1,temp, buzzer,led;
     clock_t start,end;
-    dist_hc=1;
+    dist_hc=1; //hard coded distance value
     printf("Enter the user defined timeout in sec\n");
     scanf("%d",&timeout);
     int count= 0;
