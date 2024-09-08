@@ -5,6 +5,6 @@
 </details>
   <details> 
   <summary>  Block Diagram   </summary> 
- <img width="108" alt="image" src=https://github.com/user-attachments/assets/6f436052-3a84-4857-8e6e-a06ceec7bf42>
-  </details>details>
+ <img width="526" alt="image" src=https://github.com/user-attachments/assets/6f436052-3a84-4857-8e6e-a06ceec7bf42>
+  </details>
 
