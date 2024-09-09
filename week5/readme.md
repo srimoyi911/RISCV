@@ -5,7 +5,8 @@ Tasks completed
    [posture_detect.asm](https://github.com/srimoyi911/RISCV/blob/main/week4/posture_detect.asm)
 2.  Created all.json file to generate the chipcron processor code
 3.  Generated processor core and testbench
-   
+   ![image](https://github.com/user-attachments/assets/8d85de0b-7c40-472a-94d8-42e46d0ecae2)
+
   
    
 
