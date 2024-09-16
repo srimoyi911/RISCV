@@ -10,18 +10,16 @@ Tasks completed
    
 
 5.  Updated GPIO size and GPIO pin mappings in processor.v
-    output reg write_done ; 
-    output reg [5:0] instructions ; 
+    output reg write_done ;
+    output reg [5:0] instructions ;
     input wire [11:0] input_gpio_pins; //size 10 bits, but given 12bits to match with TB reset condition
     output reg [5:0] output_gpio_pins;
-
-   always @(posedge clk) 
+    always @(posedge clk)
     begin
-    output_pins = {19'b0, top_gpio_pins[13:12],input_gpio_pins[11:10],top_gpio_pins[9:8], input_gpio_pins[7:0]} ; 
-    output_gpio_pins = {top_gpio_pins[13:12],2'b0,top_gpio_pins[9:8]}; 
-    write_done = writing_inst_done ; 
-    instructions = write_inst_count[2:0]; 
-    
+    output_pins = {19'b0, top_gpio_pins[13:12],input_gpio_pins[11:10],top_gpio_pins[9:8], input_gpio_pins[7:0]} ;
+    output_gpio_pins = {top_gpio_pins[13:12],2'b0,top_gpio_pins[9:8]};
+    write_done = writing_inst_done ;
+    instructions = write_inst_count[2:0];
     end 
 
 7. Updated input and output width in testbench.v
