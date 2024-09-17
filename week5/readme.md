@@ -74,6 +74,9 @@ Tasks completed
     vvp processor_test
   
 12. Simulation result
+
+    This output shows that the UART interface is working fine:
+    
     ![image](https://github.com/user-attachments/assets/8d66d0c8-57b6-4426-ae76-2fe033c0962c)
 
 
