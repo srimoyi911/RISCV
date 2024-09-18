@@ -15,7 +15,7 @@
    ./processor_bypass_uart
 </details>   
  <details> <summary> Waveform output with the assembly code </summary>
-  Below is the waveform output with tb inputs and outputs added alongwith the inputs and outputs of varuious black box modules like ID, 
+  Below is the waveform output with tb inputs and outputs added alongwith the inputs and outputs of various black box modules like ID, 
   ID pipeline , ALU etc
 
   <img width="912" alt="image" src="https://github.com/user-attachments/assets/4ec49515-5474-4f91-89af-1fdea0778072">
