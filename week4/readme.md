@@ -14,7 +14,8 @@ posture detection and then compile it using riscv32 compiler and generate assemb
     <img width="563" alt="image" src=https://github.com/user-attachments/assets/da5244ce-1cbb-4cbc-85c6-e035e7cec4c3>
 
  </details>
-<details><summary>Application code with optimizations, that is, removing the libraries and the debug statements and * and / operators </summary>
+<details><summary>Application code with optimizations, that is, removing the libraries and the debug statements and * and / operators. This is done, because bare metal programming desnot support external C libraries and RISCV32 bit processor doesnot support multiplication 
+ and division operators </summary>
 
 [posture_detect_inline_assembly_optimized.c](https://github.com/srimoyi911/RISCV/blob/main/week4/posture_detect_inline_assembly_optimized.c)
 
