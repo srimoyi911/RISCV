@@ -13,6 +13,7 @@
    c. use following commands to compile and simulate the design
    
    iverilog -o processor_bypass_uart testbench.v processor.v
+   
    ./processor_bypass_uart
 </details>   
  <details> <summary> Waveform output with the assembly code </summary>
