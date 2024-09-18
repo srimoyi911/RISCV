@@ -11,6 +11,7 @@
    <img width="287" alt="image" src="https://github.com/user-attachments/assets/6d08ec23-7117-4b2b-ab8d-3d9a3a8ffd79">
 
    c. use following commands to compile and simulate the design
+   
    iverilog -o processor_bypass_uart testbench.v processor.v
    ./processor_bypass_uart
 </details>   
